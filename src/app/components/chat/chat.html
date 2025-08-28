@@ -1,0 +1,23 @@
+<div class="chat-container">
+  <h2>SignalR Chat</h2>
+  
+  <div class="input-group">
+    <label for="user">User:</label>
+    <input id="user" [(ngModel)]="user" placeholder="Enter your name"/>
+  </div>
+
+  <div class="input-group">
+    <label for="message">Message:</label>
+    <input id="message" [(ngModel)]="message" (keyup.enter)="sendMessage()" placeholder="Enter your message"/>
+    <button (click)="sendMessage()" [disabled]="!user || !message">Send</button>
+    <button (click)="logout()">Logout</button>
+  </div>
+
+  <hr>
+
+  <ul id="messagesList">
+    <li *ngFor="let msg of messages">
+      <strong>{{ msg.user }}:</strong> {{ msg.message }}
+    </li>
+  </ul>
+</div>
