@@ -52,8 +52,8 @@ export class ChatService {
   }
 
   // Invokes the "sendMessage" method on the backend hub
-  public sendMessage = (user: string, message: string) => {
-    this.hubConnection.invoke('sendMessage', user, message)
+  public sendMessage = (message: string) => {
+    this.hubConnection.invoke('sendMessage', message)
       .catch(err => console.error(err));
   }
 }

@@ -33,11 +33,17 @@ export class ChatComponent implements OnInit {
     this.chatService.messages$.subscribe(res => {
       this.messages = res;
     });
+
+    this.authService.currentUser$.subscribe(user => {
+        if (user) {
+            this.user = user.name;
+        }
+    });
   }
 
   sendMessage(): void {
-    if (this.user && this.message) {
-      this.chatService.sendMessage(this.user, this.message);
+    if (this.message) {
+      this.chatService.sendMessage(this.message);
       this.message = '';
     }
   }
